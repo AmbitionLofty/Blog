@@ -1,5 +1,5 @@
-#SpringBoot之配置文件解析
-[toc]
+# SpringBoot之配置文件解析
+[TOC]
 
 
 #
@@ -15,7 +15,7 @@ Spring Boot使用了一个全局的配置文件application.properties，放在sr
 
 >如果你工程没有这个application.properties，那就在src/main/java/resources目录下新建一个.
 
-####自定义属性
+#### 自定义属性
 
 `application.properties`提供自定义属性的支持，这样我们就可以把一些常量配置在这里:
 
@@ -78,7 +78,7 @@ return configBean.getAddress();
 
 ```
 
-####参数间引用
+#### 参数间引用
 在`application.properties`中的各个参数之间也可以直接引用来使用，就像下面的设置：
 
 ```
@@ -93,7 +93,7 @@ des: ${cn.usr.name}坐落在${cn.usr.address}
 使用方式和上面一样不做描述了。
 
 
-####使用自定义配置文件
+#### 使用自定义配置文件
 
 
 时候我们不希望把所有配置都放在`application.yml`里面，这时候我们可以另外定义一个，这里我明取名为`test.yml`,路径跟也放在`src/main/resources`下面。
@@ -112,7 +112,7 @@ private String address;
 ```
 
 
-####随机值配置
+#### 随机值配置
 
 配置文件中${random} 可以用来生成各种不同类型的随机值，从而简化了代码生成的麻烦，例如 生成 int 值、long 值或者 string 字符串。
 
@@ -131,7 +131,7 @@ secret: ${random.value}
 ```
 
 
-####外部配置-命令行参数配置
+#### 外部配置-命令行参数配置
 
 Spring Boot是基于`jar`包运行的，打成jar包的程序可以直接通过下面命令运行：
 
@@ -152,7 +152,7 @@ Spring Boot是基于`jar`包运行的，打成jar包的程序可以直接通过�
 
 
 
-####配置文件的优先级
+#### 配置文件的优先级
 
 `application.properties`和`application.yml`文件可以放在一下四个位置：
 
@@ -169,7 +169,7 @@ Spring Boot是基于`jar`包运行的，打成jar包的程序可以直接通过�
 
 
 
-####Profile-多环境配置
+#### Profile-多环境配置
 
 当应用程序需要部署到不同运行环境时，一些配置细节通常会有所不同，最简单的比如日志，生产日志会将日志级别设置为WARN或更高级别，并将日志写入日志文件，而开发的时候需要日志级别为DEBUG，日志输出到控制台即可。
 
