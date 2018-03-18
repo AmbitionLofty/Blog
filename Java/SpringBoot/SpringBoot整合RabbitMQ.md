@@ -1,4 +1,4 @@
-#SpringBoot整合RabbitMQ
+# SpringBoot整合RabbitMQ
 [toc]
 
 
@@ -23,7 +23,7 @@
 ```
 
 
-###消息生产者
+### 消息生产者
 
 ConnectionFactory配置
 创建AmqpConfig文件AmqpConfig.java(后期的配置都在该文件中)
@@ -67,7 +67,7 @@ return connectionFactory;
 
 ```
 
-###RabbitTemplate
+### RabbitTemplate
 
 ```
 @Bean
@@ -84,7 +84,7 @@ return template;
 public void convertAndSend(String exchange, String routingKey, Object object, CorrelationData correlationData)
 ```
 
-###Producer
+### Producer
 
 调用啦：
 
@@ -139,7 +139,7 @@ System.out.println("消息消费失败:" + cause);
 如果需要在生产者需要消息发送后的回调，需要对rabbitTemplate设置ConfirmCallback对象，由于不同的生产者需要对应不同的ConfirmCallback，如果rabbitTemplate设置为单例bean，则所有的rabbitTemplate实际的ConfirmCallback为最后一次申明的ConfirmCallback。
 
 
-###消息消费者
+### 消息消费者
 
 还是在`AmqpConfig.class`里面
 
