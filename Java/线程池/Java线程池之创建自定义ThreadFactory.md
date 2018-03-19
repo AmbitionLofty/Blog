@@ -1,5 +1,8 @@
 # Java线程池之创建自定义ThreadFactory
 
+@(Java)
+
+
 [TOC]
 
 
@@ -79,4 +82,21 @@ public class RecorderThreadFactory implements ThreadFactory {
 }
 
 
+```
+
+调用使用：
+
+```java
+
+   /**
+     * 构造一个线程池
+     */
+    private static final ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
+            2,
+            4,
+            5,
+            TimeUnit.SECONDS,
+            new ArrayBlockingQueue<>(200),
+            new RecorderThreadFactory("WeChat Alarm"),
+            new ThreadPoolExecutor.DiscardOldestPolicy());
 ```
