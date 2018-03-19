@@ -1,9 +1,9 @@
-#Collections.unmodifiableList获取一个只读List
+# Collections.unmodifiableList获取一个只读List
 
 [toc]
 
 #
-#Collections.unmodifiableList获取一个只读List
+# Collections.unmodifiableList获取一个只读List
 
 ## java.util.Collections
 
@@ -42,7 +42,7 @@ new UnmodifiableList<>(list));
 `unmodifiableList`用来**获取一个只可读，不可写的指定的list**。如果试图去写入或者改变这个list，则会抛出一个`UnsupportedOperationException`异常。
 
 
-###原理
+### 原理
 
 那么他具体是怎么实现的呢？可以看一下`UnmodifiableList`或者`UnmodifiableRandomAccessList`的代码：
 
