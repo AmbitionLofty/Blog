@@ -1,13 +1,21 @@
 ## Java线程池
 
+@(高并发)
+
+
 [toc]
+
+##  导图
+
+![Alt text](./Java 线程池.png)
+
 
 ##  什么是线程池
 
 **线程池就是有N个子线程共同在运行的线程组合**。
 
 举个容易理解的例子：有个线程组合（即线程池，咱可以比喻为一个公司），里面有3个子线程（当作3个员工吧），待命干活。 
-只要客户告诉他一个任务（比如搬砖），公司就会挑一个员工来做;
+只要客户告诉他一个任务（比如搬砖）公司就会挑一个员工来做;
 
 如果很多客户都找，3个忙不过来，那公司可以再雇2个人，但本公司运营能力有限，办公室也不大，最多就雇佣5个人，如果还忙不过来，那这些送来的任务就排队了。一件一件做完。
 
@@ -61,7 +69,7 @@ public class ThreadPoolExecutor extends AbstractExecutorService {
 `keepAliveTime` - 线程池维护线程所允许的空闲时间 
 
 >当线程数大于核心时，多于的空闲线程最多存活时间 
-默认情况下，只有**当线程池中的线程数大于corePoolSize时，keepAliveTime才会起作用**，直到线程池中的线程数不大于corePoolSize，即当线程池中的线程数大于corePoolSize时，如果一个线程空闲的时间达到keepAliveTime，则会终止，直到线程池中的线程数不超过corePoolSize。但是如果调用了`allowCoreThreadTimeOut(boolean)`方法，在线程池中的线程数不大于corePoolSize时，keepAliveTime参数也会起作用，直到线程池中的线程数为0
+默认情况下，只有**当线程池中的线程数大于corePoolSize时，keepAliveTime才会起作用**，直到线程池中的线程数不大于corePoolSize。即当线程池中的线程数大于corePoolSize时，如果一个线程空闲的时间达到keepAliveTime，则会终止，直到线程池中的线程数不超过corePoolSize。但是如果调用了`allowCoreThreadTimeOut(boolean)`方法，在线程池中的线程数不大于corePoolSize时，keepAliveTime参数也会起作用，直到线程池中的线程数为0
 
 
 `unit` - keepAliveTime 参数的时间单位，有7种取值。
@@ -76,7 +84,7 @@ TimeUnit.MICROSECONDS;      //微妙
 TimeUnit.NANOSECONDS;       //纳秒
 ```
 
-`workQueue` - 当线程数目超过核心线程数时用于保存任务的队列。主要有3种类型的`BlockingQueue`可供选择：有界队列,无界队列和同步移交。
+`workQueue` - 当线程数目超过核心线程数时用于保存任务的队列。主要有4种类型的 `BlockingQueue`可供选择：有界队列,无界队列和同步移交。
 ```java
 ArrayBlockingQueue;  //有界队列
 LinkedBlockingQueue; //无界队列
