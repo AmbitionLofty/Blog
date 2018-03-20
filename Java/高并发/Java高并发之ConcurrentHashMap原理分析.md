@@ -1,18 +1,18 @@
 # Java高并发之ConcurrentHashMap原理分析
 
-@(Java)
+@(高并发)
 
 
 >哪有什么天生如此只是我们天天坚持。
 
-##一、背景
+## 一、背景
 
-###线程不安全的HashMap
+### 线程不安全的HashMap
  因为多线程环境下，使用Hashmap进行put操作会引起死循环，导致CPU利用率接近100%，所以在并发情况下不能使用HashMap。
-###效率低下的HashTable容器
+### 效率低下的HashTable容器
   HashTable容器使用synchronized来保证线程安全，但在线程竞争激烈的情况下HashTable的效率非常低下。因为当一个线程访问HashTable的同步方法时，其他线程访问HashTable的同步方法时，可能会进入阻塞或轮询状态。如线程1使用put进行添加元素，线程2不但不能使用put方法添加元素，并且也不能使用get方法来获取元素，所以竞争越激烈效率越低。
 
-###锁分段技术
+### 锁分段技术
 HashTable容器在竞争激烈的并发环境下表现出效率低下的原因，是因为所有访问HashTable的线程都必须竞争同一把锁，**那假如容器里有多把锁，每一把锁用于锁容器其中一部分数据，那么当多线程访问容器里不同数据段的数据时，线程间就不会存在锁竞争**，从而可以有效的提高并发访问效率，
 这就是ConcurrentHashMap所使用的锁分段技术，首先将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程访问。有些方法需要跨段，**比如size()和containsValue()，它们可能需要锁定整个表而而不仅仅是某个段，这需要按顺序锁定所有段，操作完毕后，又按顺序释放所有段的锁**。这里“按顺序”是很重要的，否则极有可能出现死锁，在ConcurrentHashMap内部，段数组是final的，并且其成员变量实际上也是final的，但是，仅仅是将数组声明为final的并不保证数组成员也是final的，这需要实现上的保证。这可以确保不会出现死锁，因为**获得锁的顺序是固定的**。
 
@@ -24,12 +24,12 @@ HashTable容器在竞争激烈的并发环境下表现出效率低下的原因�
 oncurrentHashMap是**由Segment数组结构和HashEntry数组结构组成**。Segment是一种可重入锁ReentrantLock，在ConcurrentHashMap里扮演锁的角色，HashEntry则用于存储键值对数据。一个ConcurrentHashMap里包含一个Segment数组，Segment的结构和HashMap类似，是一种数组和链表结构， 一个Segment里包含一个HashEntry数组，每个HashEntry是一个链表结构的元素， 每个Segment守护者一个HashEntry数组里的元素,当对HashEntry数组的数据进行修改时，必须首先获得它对应的Segment锁。
 
 
-##二、应用场景
+## 二、应用场景
 
 当**有一个大数组时需要在多个线程共享时就可以考虑是否把它给分层多个节点了，避免大锁**。并可以考虑通过hash算法进行一些模块定位。
 其实不止用于线程，当设计数据表的事务时（事务某种意义上也是同步机制的体现），可以把一个表看成一个需要同步的数组，如果操作的表数据太多时就可以考虑事务分离了（这也是为什么要避免大表的出现），比如把数据进行字段拆分，水平分表等.
 
-##三、源码解读
+## 三、源码解读
 ConcurrentHashMap(1.7及之前)中主要实体类就是三个：ConcurrentHashMap（整个Hash表）,Segment（桶），HashEntry（节点），对应上面的图可以看出之间的关系
 
 ```
@@ -38,7 +38,7 @@ ConcurrentHashMap(1.7及之前)中主要实体类就是三个：ConcurrentHashMa
 */  
 final Segment<K,V>[] segments;
 ```
-###不变(Immutable)和易变(Volatile)
+### 不变(Immutable)和易变(Volatile)
 ConcurrentHashMap**完全允许多个读操作并发进行，读操作并不需要加锁**。如果使用传统的技术，如HashMap中的实现，如果允许可以在hash链的中间添加或删除元素，读操作不加锁将得到不一致的数据。**ConcurrentHashMap实现技术是保证HashEntry几乎是不可变的**。HashEntry代表每个hash链中的一个节点，其结构如下所示：
 
 ```
@@ -54,10 +54,10 @@ ConcurrentHashMap**完全允许多个读操作并发进行，读操作并不需�
 **对于put操作，可以一律添加到Hash链的头部**。
 但是对于remove操作，可能需要从中间删除一个节点，这就需要将要删除节点的前面所有节点整个复制一遍，最后一个节点指向要删除结点的下一个结点。这在讲解删除操作时还会详述。为了确保读操作能够看到最新的值，将value设置成volatile，这避免了加锁。
 
-###其它
+### 其它
 为了加快定位段以及段中hash槽的速度，每个段hash槽的的个数都是2^n，这使得通过位运算就可以定位段和段中hash槽的位置。当并发级别为默认值16时，也就是段的个数，hash值的高4位决定分配在哪个段中。但是我们也不要忘记《算法导论》给我们的教训：hash槽的的个数不应该是 2^n，这可能导致hash槽分配不均，这需要对hash值重新再hash一次。（这段似乎有点多余了 ）
 
-###定位操作：
+### 定位操作：
 
 ```
 final Segment<K,V> segmentFor(int hash) {  
@@ -93,7 +93,7 @@ final Segment<K,V> segmentFor(int hash) {
 ```
 
 
-###数据结构
+### 数据结构
 所有的成员都是final的，**其中segmentMask和segmentShift主要是为了定位段**，参见上面的segmentFor方法。
 关于Hash表的基础数据结构，这里不想做过多的探讨。
 Hash表的一个很重要方面就是如何解决hash冲突，ConcurrentHashMap 和HashMap使用相同的方式，都是将hash值相同的节点放在一个hash链中。与HashMap不同的是，ConcurrentHashMap使用多个子Hash表，也就是段(Segment)。
@@ -142,7 +142,7 @@ static final class Segment<K,V> extends ReentrantLock implements Serializable {
 `table数组`存储段中节点，每个数组元素是个hash链，用HashEntry表示。table也是volatile，这使得能够读取到最新的 table值而不需要同步。loadFactor表示负载因子。
 
 
-###删除操作remove(key)
+### 删除操作remove(key)
 
 ```
 public V remove(Object key) {  
@@ -215,7 +215,7 @@ e后面的结点不需要复制，它们可以重用。
 
 
 
-###get操作
+### get操作
 
 ConcurrentHashMap的get操作是直接委托给Segment的get方法，直接看Segment的get方法：
 

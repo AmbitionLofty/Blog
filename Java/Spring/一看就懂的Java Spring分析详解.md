@@ -1,6 +1,6 @@
 # 一看就懂的Java Spring分析详解
 
-@(Java)
+@(Spring)
 
 
 ## Spring是什么？
@@ -240,7 +240,7 @@ BeanFacotry延迟加载,如果Bean的某一个属性没有注入，BeanFacotry�
 3.beanFactory主要是面对与 spring 框架的基础设施，面对 spring 自己。而 Applicationcontex 主要面对与 spring 使用的开发者。基本都会使用 Applicationcontex 并非 beanFactory 。
 
 
-###为何是反转，哪些方面反转了
+### 为何是反转，哪些方面反转了
 
 有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？**因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了**。
 
