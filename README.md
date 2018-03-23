@@ -68,7 +68,13 @@
 
 #### 设计模式
 
-- [设计模式详解](https://github.com/AmbitionLofty/Blog/blob/master/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.md)
+- [设计模式详解](https://github.com/AmbitionLofty/Blog/blob/master/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.md)
+
+
+### 编程思想
+
+- [《重构改善既有代码的设计》 简书](https://github.com/AmbitionLofty/Blog/blob/master/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/%E3%80%8A%E9%87%8D%E6%9E%84%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AE%BE%E8%AE%A1%E3%80%8B%20%E7%AE%80%E4%B9%A6.md)
+
 
 
 #### 高并发
@@ -85,8 +91,8 @@
 
 
 
-#### 其他
-- [一看就能懂的Redis基础教程](https://github.com/AmbitionLofty/Blog/blob/master/Java/%E4%B8%80%E7%9C%8B%E5%B0%B1%E8%83%BD%E6%87%82%E7%9A%84Redis%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B.md)
+#### 其他知识
+- [一看就能懂的Redis基础教程](https://github.com/AmbitionLofty/Blog/blob/master/%E5%85%B6%E4%BB%96%E7%9F%A5%E8%AF%86/%E4%B8%80%E7%9C%8B%E5%B0%B1%E8%83%BD%E6%87%82%E7%9A%84Redis%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B.md)
 
 
 
