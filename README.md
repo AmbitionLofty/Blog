@@ -135,7 +135,7 @@
 
 
 
-- [NB-IoT窄带物联网初步了解](https://github.com/AmbitionLofty/Blog/blob/master/%E7%89%A9%E8%81%94%E7%BD%91/NB-IoT%E7%AA%84%E5%B8%A6%E7%89%A9%E8%81%94%E7%BD%91%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3.md)
+- [NB-IoT窄带物联网初步了解](https://github.com/AmbitionLofty/Blog/blob/master/%E7%89%A9%E8%81%94%E7%BD%91/NB-Iot/NB-IoT%E7%AA%84%E5%B8%A6%E7%89%A9%E8%81%94%E7%BD%91%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3.md)
 
 
 - []()
