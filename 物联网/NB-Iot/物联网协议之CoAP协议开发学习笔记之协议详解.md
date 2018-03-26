@@ -25,7 +25,7 @@ CoAP中的请求与HTTP协议中的请求相同，是由客户端发起的，请
 **与HTTP协议不同的是**，CoAP的交互是**异步**的，构建于面向数据报的传输协议，如UDP。
 **交互是通过一个消息层来实现的**，消息层提供了可选的可靠性支持（采用指数回退）。
 **CoAP协议中定义了四种类型的消息： CON, NON, ACK和RST。(下文有介绍)**这四种类型的消息中包含有请求和响应标识码，标识着这些消息是请求还是响应。请求可以包含在CON和NON两种类型中，而响应则除了可以包含在CON和NON之中，还可以包含在附带响应的ACK中。
-    
+
 **从逻辑上**，可以把CoAP协议划分为两层：
 
  1. **消息层**
@@ -80,7 +80,7 @@ CoAP也可以运行在DTLS协议上（见9.1节）和其它传输协议上，例
     头部之后是Token值，可以有0到8个字节，由Token长度字段指定。这个Token值用于将某个请求和对应的响应关联。
  - **Options**
     头部和Token之后，是0个或多个选项（见3.1节）。一个选项之后，有可能是消息结束，也可能是另一个选项，也可能是payload标识符和payload部分。
-    
+
 
  - **payload部分**
     在头部、token和选项之后，是payload部分（可以没有payload）。
@@ -108,7 +108,7 @@ CoAP协议的特点是传输的内容小巧精简，但是在某些情况下不�
 ##	Option的格式
 CoAP定义了**许多**option。
 一般情况下Option部分包含Option Delta、Option Length和Option Value三部分。
-消息中的**每个option都有一个**option编号，option值长度，和option值。 
+消息中的**每个option都有一个**option编号，option值长度，和option值。
 消息中的option号（TLV格式中的T）**并不是直接指定option编号的**。
 所有的option必须**按实际option编号的递增排列**，某一个option和上一个option之间的option**编号差值为delta**；
 每一个TLV格式的option号都是delta值（数据包中第一个option的delta即它的option编号）。
@@ -127,7 +127,7 @@ option编号由“CoAP option编号”表维护（见12.2节）。5.4讲述了�
      - **当值为13**：有一个8-bit无符号整型（extended）跟随在第一个字节之后，本option的实际delta是这个8-bit值加13。
      - **当值为14**：有一个16-bit无符号整型（网络字节序）（extended）跟随在第一个字节之后，本option的实际delta是这个16-bit值加269。
      - **当值为15**：为payload标识符而保留。如果这个字段被设置为值15，但这个字节不是payload标识符，那么必须当作消息格式错误来处理。
-   
+
  - **Option Length**：
     表示Option Value的具体长度。    
 4-bit无符号整数。值0-12代表这个option值的长度，单位是字节。其它3个值是特殊保留的：
@@ -202,38 +202,38 @@ option编号由“CoAP option编号”表维护（见12.2节）。5.4讲述了�
     1.这个方法的响应码成功返回。
     2.这个方法是否幂等，安全或两者都满足。
 
-  
+
  2. **响应码** 这个sub-registry的名字是“CoAP Response Codes”
     每个sub-registry必须包含在2.00-5.31范围内的响应码，响应码的描述，响应码的文档参考。
 
     初始化进入这个sub-registry如下：
-    
-    
-     +------+------------------------------+-----------+ 
+
+
+            +------+------------------------------+-----------+
         | Code | Description                  | Reference |
         +------+------------------------------+-----------+
-        | 2.01 | Created                      | [RFC7252] | 
+        | 2.01 | Created                      | [RFC7252] |
         | 2.02 | Deleted                      | [RFC7252] |
         | 2.03 | Valid                        | [RFC7252] |
         | 2.04 | Changed                      | [RFC7252] |
         | 2.05 | Content                      | [RFC7252] |
         | 4.00 | Bad Request                  | [RFC7252] |
-        | 4.01 | Unauthorized                 | [RFC7252] | 
+        | 4.01 | Unauthorized                 | [RFC7252] |
         | 4.02 | Bad Option                   | [RFC7252] |
-        | 4.03 | Forbidden                    | [RFC7252] | 
-        | 4.04 | Not Found                    | [RFC7252] | 
-        | 4.05 | Method Not Allowed           | [RFC7252] | 
-        | 4.06 | Not Acceptable               | [RFC7252] | 
-        | 4.12 | Precondition Failed          | [RFC7252] | 
+        | 4.03 | Forbidden                    | [RFC7252] |
+        | 4.04 | Not Found                    | [RFC7252] |
+        | 4.05 | Method Not Allowed           | [RFC7252] |
+        | 4.06 | Not Acceptable               | [RFC7252] |
+        | 4.12 | Precondition Failed          | [RFC7252] |
         | 4.13 | Request Entity Too Large     | [RFC7252] |  
         | 4.15 | Unsupported Content-Format   | [RFC7252] |  
         | 5.00 | Internal Server Error        | [RFC7252] |
-        | 5.01 | Not Implemented              | [RFC7252] | 
+        | 5.01 | Not Implemented              | [RFC7252] |
         | 5.02 | Bad Gateway                  | [RFC7252] |  
-        | 5.03 | Service Unavailable          | [RFC7252] | 
-        | 5.04 | Gateway Timeout              | [RFC7252] | 
-        | 5.05 | Proxying Not Supported       | [RFC7252] | 
-        +------+------------------------------+-----------+ 
+        | 5.03 | Service Unavailable          | [RFC7252] |
+        | 5.04 | Gateway Timeout              | [RFC7252] |
+        | 5.05 | Proxying Not Supported       | [RFC7252] |
+        +------+------------------------------+-----------+
 			 表 6: CoAP Response Codes
 响应码3.00-3.31是预留给将来使用。所有其他响应码都没有被安排。
 
@@ -246,12 +246,12 @@ option编号由“CoAP option编号”表维护（见12.2节）。5.4讲述了�
 
  - 是否需要携带payload，option。
  - payload的语义。举个例子，2.05（内容）响应的payload是目标资源的展示；payload在错误的响应中是可读和诊断的。
- - payload的格式。举个例子，这个格式在2.05（内容）响应是通过内容格式选项表示；payload的格式在一个错误的 
+ - payload的格式。举个例子，这个格式在2.05（内容）响应是通过内容格式选项表示；payload的格式在一个错误的
  - 响应中总是Net-Unicode文本
  - 响应是否可以缓冲，取决于freshness model
  - 响应是否通过合法性检查，取决于validation model
  - 响应是否导致一个cache来标志响应已经存储，表明这个请求的URI不是最新的。
-  
+
 
 Content-Format描述
 ----
@@ -305,11 +305,5 @@ CoAP返回中包含温度数据，使用字符串形式描述，具体值为"22.
 
 
 参考文献：
-1.译文：https://github.com/WildDogTeam/contribute/blob/master/source/RFC7252-%E3%80%8A%E5%8F%97%E9%99%90%E5%BA%94%E7%94%A8%E5%8D%8F%E8%AE%AE%E3%80%8B%E4%B8%AD%E6%96%87%E7%89%88.md 
+1.译文：https://github.com/WildDogTeam/contribute/blob/master/source/RFC7252-%E3%80%8A%E5%8F%97%E9%99%90%E5%BA%94%E7%94%A8%E5%8D%8F%E8%AE%AE%E3%80%8B%E4%B8%AD%E6%96%87%E7%89%88.md
 2.http://blog.csdn.net/xukai871105/article/details/17734163   
-    
-    
-    
-
- 
-
