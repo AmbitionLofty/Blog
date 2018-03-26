@@ -52,6 +52,17 @@
 
 - [SpringBoot整合RabbitMQ](https://github.com/AmbitionLofty/Blog/blob/master/Java/SpringBoot/SpringBoot%E6%95%B4%E5%90%88RabbitMQ.md)
 
+
+- [Spring boot内嵌容器tomcat配置+多端口监听配置](https://github.com/AmbitionLofty/Blog/blob/master/Java/SpringBoot/Spring%20boot%E5%86%85%E5%B5%8C%E5%AE%B9%E5%99%A8tomcat%E9%85%8D%E7%BD%AE.md)
+
+
+- [Spring Boot上下文的创建](https://github.com/AmbitionLofty/Blog/blob/master/Java/SpringBoot/Spring%20Boot%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9A%84%E5%88%9B%E5%BB%BA.md)
+
+
+- []()
+
+- []()
+
 ### 实用开发技巧
 
 - [Collections.unmodifiableList获取一个只读List](https://github.com/AmbitionLofty/Blog/blob/master/Java/%E5%AE%9E%E7%94%A8%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/Collections.unmodifiableList%E8%8E%B7%E5%8F%96%E4%B8%80%E4%B8%AA%E5%8F%AA%E8%AF%BBList.md)
