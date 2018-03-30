@@ -59,8 +59,11 @@
 - [Spring Boot上下文的创建](https://github.com/AmbitionLofty/Blog/blob/master/Java/SpringBoot/Spring%20Boot%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9A%84%E5%88%9B%E5%BB%BA.md)
 
 
-- []()
+- [Spring Boot @Application创建源码分析](https://github.com/AmbitionLofty/Blog/blob/master/Java/SpringBoot/Spring%20Boot%20%40Application%E5%88%9B%E5%BB%BA%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
 
+- [Spring Boot 整合RabbitMQ源码分析](https://github.com/AmbitionLofty/Blog/blob/master/Java/SpringBoot/Spring%20Boot%20%E6%95%B4%E5%90%88RabbitMQ%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
+- []()
+- []()
 - []()
 
 ### 实用开发技巧
