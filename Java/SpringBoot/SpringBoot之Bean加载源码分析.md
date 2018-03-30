@@ -978,3 +978,14 @@ Set<MethodMetadata> beanMethods = sourceClass.getMetadata().getAnnotatedMethods(
 
 
 上面这两个注解相对来讲要简单一些，至此bean的解析完成，这里面涉及到多重递归，首先理清楚一条线才能把代码看明白。
+
+
+--------
+
+
+
+OVER
+
+
+
+[原文](https://blog.csdn.net/liaokailin/article/details/49107209)
