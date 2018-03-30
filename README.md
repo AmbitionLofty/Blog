@@ -15,7 +15,7 @@
 
 # 联系方式
 
-* QQ: 2528847519
+* 工作QQ: 2528847519
 * 微信: shizhiyuan799
 * 单位：[山东有人信息技术有限公司](http://www.sdusr.com/)
 
@@ -62,7 +62,9 @@
 - [Spring Boot @Application创建源码分析](https://github.com/AmbitionLofty/Blog/blob/master/Java/SpringBoot/Spring%20Boot%20%40Application%E5%88%9B%E5%BB%BA%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
 
 - [Spring Boot 整合RabbitMQ源码分析](https://github.com/AmbitionLofty/Blog/blob/master/Java/SpringBoot/Spring%20Boot%20%E6%95%B4%E5%90%88RabbitMQ%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
-- []()
+
+
+- [SpringBoot之Bean加载源码分析](https://github.com/AmbitionLofty/Blog/blob/master/Java/SpringBoot/SpringBoot%E4%B9%8BBean%E5%8A%A0%E8%BD%BD%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
 - []()
 - []()
 
