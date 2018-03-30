@@ -71,7 +71,8 @@
 
 - [SpringBoot之Bean加载源码分析](https://github.com/AmbitionLofty/Blog/blob/master/Java/SpringBoot/SpringBoot%E4%B9%8BBean%E5%8A%A0%E8%BD%BD%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
 
-- []()
+- [SpringBoot之自动配置原理分析](https://github.com/AmbitionLofty/Blog/blob/master/Java/SpringBoot/SpringBoot%E4%B9%8B%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.md)
+
 - []()
 
 ### 实用开发技巧
